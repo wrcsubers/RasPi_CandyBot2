@@ -105,7 +105,7 @@ Secondly, the kiosk pc is a laptop running Windows 10.  Firefox Enterprise is ru
 The managment client can be ran on any laptop/desktop, although it should have a wired network connection.
 
 #### Software
-My management client was running Windows 10 Pro (any OS should work) and Firefox 94.0.
+Management client was running Windows 10 Pro (any OS should work) and Firefox 94.0.
 
 #### Usage
 * The management client consists of a single HTML page with a number of features which help support the kiosk.  
