@@ -1,0 +1,340 @@
+@font-face {
+    font-family: 'Halloween';
+    src: url('../font/halloweek.woff') format('woff');
+}
+
+* {
+    user-select: none;
+}
+
+body {
+    height: 99%;
+    width: 99%;
+    background: #595959;
+    font-family: 'Halloween';
+    color: #272727;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0px;
+    touch-action: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    font-size: 170px;
+}
+
+h2 {
+    font-size: 70px;
+}
+
+h3 {
+    font-size: 45px;
+}
+
+h5 {
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#topOfPage_Main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    height: 17vh;
+    width: 100vw;
+    color: #070707;
+}
+
+#topOfPage_Title {
+    font-size: 84px;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 15px;
+}
+
+#topOfPage_Content {
+    font-size: 150px;
+}
+
+#selectionIcons_Main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 75vh;
+}
+
+.selectionIcons_Row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.pickerIcon {
+    width: 275px;
+    height: 275px;
+    background-color: transparent;
+    border: transparent;
+    font-size: 90px;
+    color: transparent;
+    font-family: 'Halloween';
+}
+
+.popupBox {
+    position: absolute;
+    background: #333232F2;
+    width: 98vw;
+    left: 0;
+    height: 98vh;
+    top: 0;
+    padding: 1vh 1vw;
+    z-index: 2;
+    transition: visibility 0s linear 0s, opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    animation-fill-mode: both;
+    color: #ffa500;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    white-space: pre-line;
+}
+
+#popupBox_Title {
+    color: #ffa500;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 15px;
+}
+
+#popupBox_Content {
+    color: #ffa500;
+}
+
+#popupBox_SubContent {
+    color: #ffa500;
+    text-decoration: overline;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 15px;
+}
+
+.popupTextButton {
+    background-color: #272727;
+    border-radius: 25px;
+    display: inline-block;
+    cursor: auto;
+    color: #ffa500;
+    font-family: 'Halloween';
+    font-size: 150px;
+    width: auto;
+    min-width: 400px;
+    height: 275px;
+    margin: 75px auto;
+    padding: 25px;
+}
+
+.popupTextButton:active {
+    position: relative;
+    top: 5px;
+}
+
+.popupIconButton {
+    animation-name: wiggle;
+    animation-iteration-count: infinite;
+    animation-duration: 2.5s;
+    width: 500px;
+    height: 500px;
+    background-color: transparent;
+    border: transparent;
+    margin: 15px auto;
+}
+
+.popupIconButton:active {
+    position: relative;
+    top: 5px;
+}
+
+#popupBox_Lights_Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 1150px;
+}
+
+#popupBox_Joke_Content {
+    transition: opacity 300ms linear 0s;
+}
+
+.Lights_Button_Row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.lightsIconButton {
+    animation-name: wiggle;
+    animation-timing-function: linear;
+    animation-direction: forward;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    width: 225px;
+    height: 225px;
+    background-color: transparent;
+    border: transparent;
+    margin: 15px;
+    filter: brightness(75%);
+}
+
+.lightsIconButton:active {
+    position: relative;
+    top: 5px;
+}
+
+.lightsIconButtonSelected {
+    scale: 1.35;
+    filter: brightness(125%);
+}
+
+.timerText {
+    font-size: 50px;
+    justify-self: end;
+}
+
+.grayOut {
+    filter: grayscale(100%);
+}
+
+.popupBoxMessage {
+    position: absolute;
+    background: #000000;
+    width: 98vw;
+    left: 0;
+    height: 98vh;
+    top: 0;
+    padding: 1vh 1vw;
+    z-index: 10;
+    transition: visibility 0s linear 0s, opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    animation-fill-mode: both;
+    color: #ffa500;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    white-space: pre-line;
+}
+
+.utilityButton_Number,
+.utilityButton_Text {
+    color: #ffa500;
+    background-color: #272727;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+.utilityButton_Number {
+    width: 125px;
+    height: 125px;
+    font-size: 80px;
+}
+
+.utilityButton_Text {
+    min-width: 20vw;
+    height: 100px;
+    font-size: 50px;
+    padding: 0px 25px;
+}
+
+.utilityButton_Number:active,
+.utilityButton_Text:active {
+    color: #000000;
+}
+
+@keyframes wiggle {
+    0% {
+        rotate: 0deg;
+    }
+    2% {
+        rotate: 1deg;
+    }
+    12.5% {
+        rotate: -6deg;
+    }
+    37.5% {
+        rotate: 6deg;
+    }
+    48% {
+        rotate: -1deg;
+    }
+    50%,
+    100% {
+        rotate: 0deg;
+    }
+}
+
+@keyframes zoom-in {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.05);
+    }
+    50%,
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoom-out {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(0.95);
+    }
+    50%,
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shrink {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.disabled {
+    pointer-events: none;
+}

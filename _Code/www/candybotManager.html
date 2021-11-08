@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CandyBot 2.0 - Manager</title>
+    <meta name="description" content="CandyBot 2.0 - Manager Page">
+    <meta name="author" content="wrcsubers - Cameron Woods">
+
+    <link rel="stylesheet" href="css/managerMain.css">
+
+    <!-- Script for UI Control/Functions -->
+    <script src="scripts/managerMain.js" defer></script>
+
+    <!-- Socket.IO Client Side Script -->
+    <script src="/socket.io/socket.io.js" defer></script>
+
+    <!-- Socket.IO Interface Script -->
+    <script src="scripts/managerSocketIO.js" defer></script>
+
+    <!-- Script for WebRTC Connection -->
+    <script src="scripts/managerWebRTC.js" defer></script>
+
+</head>
+
+<body>
+    <div class="flexColumn" style="gap: 10px;">
+        <div class="flexRow">
+            <h4 id="serverStatus">Server Connection: &#128308;</h4>
+            <button id="connectVideo_button" class="buttonSmall">Connect Video</button>
+            <button id="reloadClient_button" class="buttonSmall" onclick="reloadClient()">Reload Client</button>
+            <h4 id="clientStatus">Client Connection: &#128308;</h4>
+        </div>
+
+        <div id="remote_Displays" class="flexRow">
+            <video id="Video1" autoplay src="null" style="rotate: 90deg;"></video>
+            <audio id="Audio0" autoplay src="null"></audio>
+            <video id="Video2" autoplay src="null"></video>
+        </div>
+
+        <hr>
+
+        <div class="flexRow" style="justify-content: center;">
+            <div class="flexColumn">
+                <button class="buttonLarge" onclick="socket.emit('runFeeder', -1);">Reverse Feed</button>
+                <button class="buttonLarge" onclick="socket.emit('runFeeder', 1);">1x Treat</button>
+                <button class="buttonLarge" onclick="socket.emit('runFeeder', 2);">2x Treat</button>
+                <button class="buttonLarge" onclick="resetClientGame()">Reset Game</button>
+            </div>
+            <div class="flexColumn" style="gap: 30px;">
+                <div class="flexColumn" style="width: 100%;">
+                    <h3 style="margin-bottom: -5px;">Custom Message:</h3>
+                    <hr style="width: 100%;">
+                    <input id="input_customMessageBox" placeholder="Type custom message here, press 'Enter' to send" type="text" style="width: 90%;">
+                </div>
+                <div class="flexRow" style="align-content: space-around;">
+                    <input id="input_messageBoxTimeout" placeholder="Timeout" type="number" min="5" max="1000" style="width: 20%;">
+                    <button id="button_showQRCode" class="buttonSmall" onclick="showQRCode()">Show QR Code</button>
+                    <button id="button_closeMessageBox" class="buttonSmall" onclick="closeMessageBox()">Close Message Box</button>
+                </div>
+                <div class="flexColumn">
+                    <h3 style="margin-bottom: -5px;">Light Shows:</h3>
+                    <hr style="width: 100%;">
+                    <div class="flexRow" style="gap: 5px;">
+                        <button class="buttonColor" id="button_LightShow_Default" onclick="lightShowSelected(this)" style="font-size: 100%;">Default</button>
+                        <button class="buttonColor" id="button_LightShow_Red" onclick="lightShowSelected(this)" style="background-color: #ff0000;"></button>
+                        <button class="buttonColor" id="button_LightShow_Orange" onclick="lightShowSelected(this)" style="background-color: #ffa500;"></button>
+                        <button class="buttonColor" id="button_LightShow_Yellow" onclick="lightShowSelected(this)" style="background-color: #ffff00;"></button>
+                        <button class="buttonColor" id="button_LightShow_Green" onclick="lightShowSelected(this)" style="background-color: #008000;"></button>
+                        <button class="buttonColor" id="button_LightShow_Turquoise" onclick="lightShowSelected(this)" style="background-color: #40e0d0;"></button>
+                        <button class="buttonColor" id="button_LightShow_Blue" onclick="lightShowSelected(this)" style="background-color: #0000ff;"></button>
+                        <button class="buttonColor" id="button_LightShow_Purple" onclick="lightShowSelected(this)" style="background-color: #800080;"></button>
+                        <button class="buttonColor" id="button_LightShow_Pink" onclick="lightShowSelected(this)" style="background-color: #ffc0cb;"></button>
+                        <button class="buttonColor" id="button_LightShow_White" onclick="lightShowSelected(this)" style="background-color: #ffffff;"></button>
+                        <button class="buttonColor" id="button_LightShow_Rainbow" onclick="lightShowSelected(this)" style="background-image: linear-gradient(to right, #ff0000 0%, #ffff00 33%, #008000 66%, #0000ff 100%);"></button>
+                        <button class="buttonColor" id="button_LightShow_Black" onclick="lightShowSelected(this)" style="background-color: #000000;"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

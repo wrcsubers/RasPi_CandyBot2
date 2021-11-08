@@ -1,0 +1,109 @@
+body {
+    height: 99%;
+    width: 99%;
+    background: #595959;
+    font-family: Helvetica, sans-serif;
+    color: #101010;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    font-size: 170px;
+}
+
+h2 {
+    font-size: 70px;
+}
+
+h3 {
+    font-size: 20px;
+    color: #101010;
+}
+
+h4 {
+    margin: 0% 3%;
+}
+
+button {
+    background-color: #3A3A3A;
+    border-radius: 8px;
+    border: 0px;
+    display: inline-block;
+    color: #101010;
+    font-family: Arial;
+    width: max-content;
+}
+
+button:hover {
+    background-color: #202020;
+    color: #595959;
+}
+
+button:active {
+    position: relative;
+    top: 3px;
+}
+
+.buttonSmall {
+    font-size: 15px;
+    padding: 7px 7px;
+    margin: 4px;
+    min-width: none;
+}
+
+.buttonLarge {
+    font-size: 28px;
+    padding: 15px 15px;
+    margin: 4px;
+    min-width: 150px;
+}
+
+.buttonColor {
+    width: 5vw;
+    height: 5vw;
+}
+
+.buttonColor:hover {
+    scale: 0.85;
+}
+
+hr {
+    color: #333333;
+    width: 80vw;
+}
+
+video {
+    width: 50vh;
+    height: 50vh;
+    transform-origin: center;
+    border: 2px solid #333333;
+}
+
+.flexColumn {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.flexRow {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    gap: 5px;
+}

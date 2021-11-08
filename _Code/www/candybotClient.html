@@ -1,0 +1,178 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>CandyBot 2.0 - Client</title>
+    <meta name="description" content="CandyBot 2.0 - Client Page">
+    <meta name="author" content="wrcsubers - Cameron Woods">
+
+    <link rel="stylesheet" href="css/clientMain.css">
+
+    <!-- Script for UI Control/Functions -->
+    <script src="scripts/clientMain.js" defer></script>
+
+    <!-- Socket.IO Client Side Script -->
+    <script src="/socket.io/socket.io.js" defer></script>
+
+    <!-- Socket.IO Interface Script -->
+    <script src="scripts/clientSocketIO.js" defer></script>
+
+    <!-- Script for WebRTC Connection -->
+    <script src="scripts/clientWebRTC.js" defer></script>
+
+</head>
+
+<body>
+    <div id="playScreen_Main" class="">
+        <!-- Top of Page Title Content -->
+        <div id="topOfPage_Main">
+            <h1 id="topOfPage_Title">Touch icons to reveal prizes</h1>
+            <h1 id="topOfPage_Content">Match 3 to Win!</h1>
+        </div>
+
+        <!-- Selection Icon Grid -->
+        <div id="selectionIcons_Main">
+            <div class="selectionIcons_Row" id="selectionIcons_Row1"></div>
+            <div class="selectionIcons_Row" id="selectionIcons_Row2"></div>
+            <div class="selectionIcons_Row" id="selectionIcons_Row3"></div>
+            <div class="selectionIcons_Row" id="selectionIcons_Row4"></div>
+        </div>
+    </div>
+
+    <!-- Popup Box - Trick -->
+    <div id="popupBox_Trick_Main" class="popupBox hidden">
+        <h2 id="popupBox_Trick_Title">You Won A:</h2>
+        <h1 id="popupBox_Trick_Content">Trick&#13;&#10;+&#13;&#10;Treat</h1>
+        <h2 id="popupBox_Trick_SubContent">Press the crystal ball for a trick!</h2>
+        <button id="popupBox_Trick_Button" style="background-image: url('images/other/crystalBall.svg');" class="popupIconButton"></button>
+        <h2 id="popupBox_Trick_Timer" class="timerText"></h2>
+    </div>
+
+    <!-- Popup Box - Treat -->
+    <div id="popupBox_Treat_Main" class="popupBox hidden">
+        <h2 id="popupBox_Treat_Title">You Won A:</h2>
+        <h1 id="popupBox_Treat_Content">0x Treat</h1>
+        <h2 id="popupBox_Treat_SubContent">Place you bag below the chute, then press the Candy Bag</h2>
+        <button id="popupBox_Treat_Button" style="background-image: url('images/other/candyBag.svg');" class="popupIconButton"></button>
+        <h2 id="popupBox_Treat_Timer" class="timerText"></h2>
+    </div>
+
+    <!-- Popup Box - Joke -->
+    <div id="popupBox_Joke_Main" class="popupBox hidden">
+        <h2 id="popupBox_Joke_Title">How about a Joke...</h2>
+        <div style="display: flex;  align-items: center; height: 1150px; margin: 10px">
+            <h1 id="popupBox_Joke_Content"></h1>
+        </div>
+        <h2 id="popupBox_Joke_SubContent"></h2>
+        <h2 id="popupBox_Joke_Timer" class="timerText">Continuing In: 10</h2>
+    </div>
+
+    <!-- Popup Box - Lights -->
+    <div id="popupBox_Lights_Main" class="popupBox hidden">
+        <h2 id="popupBox_Lights_Title">Pick a potion to change my color!</h2>
+        <div id="popupBox_Lights_Content">
+            <div class="Lights_Button_Row">
+                <button id="popupBox_Lights_Button_Red" style="background-image: url('images/potionBottles/red.svg');" class="lightsIconButton"></button>
+                <button id="popupBox_Lights_Button_Orange" style="background-image: url('images/potionBottles/orange.svg');" class="lightsIconButton"></button>
+            </div>
+            <div class="Lights_Button_Row">
+                <button id="popupBox_Lights_Button_Yellow" style="background-image: url('images/potionBottles/yellow.svg');" class="lightsIconButton"></button>
+                <button id="popupBox_Lights_Button_Green" style="background-image: url('images/potionBottles/green.svg');" class="lightsIconButton"></button>
+                <button id="popupBox_Lights_Button_Turquoise" style="background-image: url('images/potionBottles/turquoise.svg');" class="lightsIconButton"></button>
+            </div>
+            <div class="Lights_Button_Row">
+                <button id="popupBox_Lights_Button_Blue" style="background-image: url('images/potionBottles/blue.svg');" class="lightsIconButton"></button>
+                <button id="popupBox_Lights_Button_Purple" style="background-image: url('images/potionBottles/purple.svg');" class="lightsIconButton"></button>
+            </div>
+            <div class="Lights_Button_Row">
+                <button id="popupBox_Lights_Button_Pink" style="background-image: url('images/potionBottles/pink.svg');" class="lightsIconButton"></button>
+                <button id="popupBox_Lights_Button_White" style="background-image: url('images/potionBottles/white.svg');" class="lightsIconButton"></button>
+                <button id="popupBox_Lights_Button_Rainbow" style="background-image: url('images/potionBottles/rainbow.svg');" class="lightsIconButton"></button>
+            </div>
+        </div>
+        <h2 id="popupBox_Lights_SubContent">3 Picks Left</h2>
+        <h2 id="popupBox_Lights_Timer" class="timerText">Continuing In: 10</h2>
+    </div>
+
+    <!-- Popup Box - EndPlay -->
+    <div id="popupBox_EndPlay_Main" class="popupBox hidden">
+        <h2 id="popupBox_EndPlay_Title" style="font-size: 125px;">Thanks for Playing!</h2>
+        <div style="display: flex;  align-items: center; height: 1150px; margin: 10px">
+            <h1 id="popupBox_EndPlay_Content" style="font-size: 175px;">Happy Halloween!</h1>
+        </div>
+        <h2 id="popupBox_EndPlay_SubContent"></h2>
+        <h2 id="popupBox_EndPlay_Timer" class="timerText" style="font-size: 125px;">Continuing In: 10</h2>
+        <h3>Please, only 1 turn per person</h3>
+    </div>
+
+    <!-- Popup Box - Message -->
+    <div id="popupBox_Message_Main" class="popupBoxMessage hidden">
+        <h2 id="popupBox_Message_Title"></h2>
+        <h1 id="popupBox_Message_Content"></h1>
+        <h2 id="popupBox_Message_SubContent"></h2>
+        <h2 id="popupBox_Message_Timer" class="timerText"></h2>
+    </div>
+
+    <!-- Popup Box - Passcode -->
+    <div id="popupBox_Passcode_Main" class="popupBoxMessage hidden">
+        <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div style="display:flex; flex-direction: row;">
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">1</button>
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">2</button>
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">3</button>
+                </div>
+                <div style="display:flex; flex-direction: row;">
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">4</button>
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">5</button>
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">6</button>
+                </div>
+                <div style="display:flex; flex-direction: row;">
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">7</button>
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">8</button>
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">9</button>
+                </div>
+                <div style="display:flex; flex-direction: row;">
+                    <button class="utilityButton_Number" onclick="addPasscodeDigit(this.innerHTML)">0</button>
+                </div>
+                <br>
+                <div style="display:flex; flex-direction: row;">
+                    <button class="utilityButton_Text" onclick="addPasscodeDigit(this.innerHTML)">Enter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Box - Utilities -->
+    <div id="popupBox_Utilities_Main" class="popupBoxMessage hidden">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <button class="utilityButton_Text" onclick="socket.emit('runFeeder', -2);">Feed -500</button>
+            <button class="utilityButton_Text" onclick="socket.emit('runFeeder', -1);">Feed -250</button>
+            <button class="utilityButton_Text" onclick="socket.emit('runFeeder', 1);">Feed +250</button>
+            <button class="utilityButton_Text" onclick="socket.emit('runFeeder', 2);">Feed +500</button>
+            <button class="utilityButton_Text" onclick="resetGame()">Reset Game</button>
+            <button class="utilityButton_Text" onclick="location.reload()">Reload Client</button>
+            <br>
+            <h5 id="popBox_Utilities_CurrentWinner"></h5>
+            <br>
+            <button class="utilityButton_Text" onclick="awardTrick(1)">Show Joke Trick</button>
+            <button class="utilityButton_Text" onclick="awardTrick(2)">Show Light Trick</button>
+            <br>
+            <button class="utilityButton_Text" onclick="startScreenShare()">Start Screen Share</button>
+            <br>
+            <button class="utilityButton_Text" onclick="document.getElementById('popupBox_Utilities_Main').classList.replace('visible','hidden')">Exit</button>
+        </div>
+    </div>
+
+    <!-- Server Status -->
+    <div id="status_Main" style="position: absolute; bottom: 10px; right: 10px; z-index: 10; opacity: 0.5;">
+        <h4 id="serverStatus" style="cursor: pointer;" ondblclick="showPasscodePrompt();">&#128308;</h4>
+    </div>
+</body>
+
+</html>
