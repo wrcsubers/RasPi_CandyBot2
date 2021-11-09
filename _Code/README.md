@@ -7,12 +7,16 @@
 - Tested as working on Raspberry Pi Zero W
 
 #### At SSH Terminal:  
+```
 sudo apt-get update  
 sudo apt-get upgrade  
+```
 
 #### Install NodeJS and NPM:  
+```
 sudo apt-get install -y nodejs  
 sudo apt-get install -y npm  
+```
 
 #### Make directory for files:  
 mkdir CandyBot2  
