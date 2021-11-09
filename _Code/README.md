@@ -1,7 +1,10 @@
-## Setup instructions for CandyBot 2.0 on Raspberry Pi Zero W
-- Using Raspbian Lite
+## Setup the Raspberry Pi
+### Use the following instructions to setup Node.JS on the Rapsberry Pi
+
+- OS is Raspbian Lite
 - Headless with Ethernet via USB OTG Adapter
 - Accessing SSH via Putty / WinSCP
+- Tested as working on Raspberry Pi Zero W
 
 #### At SSH Terminal:  
 sudo apt-get update  
@@ -22,10 +25,8 @@ npm install socket.io
 npm install bufferutil
 npm install utf-8-validate
 
-
 #### Move Files to Raspberry Pi
-Using WinSCP copy all files in _Code folder to CandyBot2/ directory
-
+Using WinSCP copy all files in *_Code* folder to CandyBot2/ directory
 
 #### Run Server
 sudo node serverMain.js
